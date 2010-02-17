@@ -1,0 +1,11 @@
+## Interface: 30300
+## Author: coree
+## Version: 090409
+## Title: oUF coree
+## Notes: oUF layout
+## RequiredDeps: oUF
+## OptionalDeps: oUF_Swing, oUF_AuraWatch, oUF_BarFader, oUF_CombatFeedback, oUF_DebuffHighlight, oUF_HealComm, oUF_Experience, oUF_Reputation, oUF_ReadyCheck
+
+oUF_coreePPets.xml
+oUF_coreeMtt.xml
+oUF_coree.lua
