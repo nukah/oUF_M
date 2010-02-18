@@ -82,7 +82,7 @@ local short = function(value)
 end
 
 oUF.Tags["[nname]"] = function(u)
-	color = RAID_CLASS_COLORS[select(2,UnitClass(u))]
+	color = RAID_CLASS_COLORS[select(2,UnitClass(u))] or {r=1,g=1,b=1}
 	local name = utf8sub(UnitName(u),15,true)
 	local short = utf8sub(UnitName(u),6,true)
 	return 
@@ -113,7 +113,12 @@ oUF.TagEvents["[power]"] = oUF.TagEvents["[curpp]"]
 oUF.Tags["[power]"] = function(u)
 	local min,max = UnitMana(u),UnitManaMax(u)
 	local ptype = select(2, UnitPowerType(u))
-	local r,g,b = unpack(oUF.colors.power[ptype])
+	local r,g,b = 1,0,0
+	for k,v in pairs(oUF.colors.power) do 
+		if(ptype == k) then
+			r,g,b = unpack(oUF.colors.power[ptype])
+		end
+	end
 	return (min == 0) and ""  
 		or	(u == "target") and string.format("|cff%02x%02x%02x%s|r", r*255, g*255, b*255, short(min))
 		or string.format("|cff%02x%02x%02x%s|r", r*255, g*255, b*255, min)
